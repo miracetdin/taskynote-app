@@ -1,0 +1,52 @@
+# General
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# IDE & Editor
+.idea/
+.vscode/
+*.iml
+
+# OS-Specific
+ehthumbs.db
+Icon?
+__MACOSX/
+
+# Java & Spring Boot
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.db
+*.h2.db
+*.sqlite
+
+# Maven
+.mvn/
+!**/src/main/**/maven-wrapper.jar
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Node.js & JavaScript
+node_modules/
+dist/
+build/
+
+# C# & .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosschache
+*.sln.docstates
+
+# Environment
+.env
+.env.*

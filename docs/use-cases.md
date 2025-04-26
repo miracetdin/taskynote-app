@@ -44,8 +44,11 @@
 - **Description:** Users can delete a note.
 - **Basic Flow:**
   1. User selects a note.
-  2. User confirms deletion.
-  3. System removes the note.
+  2. System checks if the note is linked to any task.
+  3. If linked, system shows a warning and lists the tasks.
+  4. User confirms deletion.
+  5. System removes the note from all linked tasks.
+  6. System deletes the note.
    
 ## 8. Create Task
 - **Description:** Users can create a new task.
@@ -79,8 +82,11 @@
 - **Description:** Users can delete a task.
 - **Basic Flow:**
   1. User selects a task.
-  2. User confirms deletion.
-  3. System removes the task.
+  2. System checks if the task is a prerequisites for any other task.
+  3. If yes, system shows a warning and lists the dependent tasks.
+  4. User confirms deletion.
+  5. System removes the dependency links.
+  6. System removes the task.
 
 ## 13. Complete Task
 - **Description:** Users can mark a task as completed.
@@ -88,7 +94,7 @@
   1. User selects a task.
   2. User marks the task as completed.
   3. System checks if all prerequisite tasks are completed.
-  4. System update task status.
+  4. System updates task status.
 
 ## 14. Create Tag
 - **Description:** Users create a new tag.

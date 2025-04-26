@@ -1,0 +1,88 @@
+
+@startuml
+
+title TaskyNote - Use-Case Diagram
+
+left to right direction
+
+skinparam rectangle {
+    BackgroundColor #F8F8F8
+    CardBorderColor Black
+}
+
+skinparam actor {
+    BackgroundColor #D5E8D4
+    CardBorderColor Black
+}
+
+skinparam DefaultFontName Arial
+skinparam DefaultFontSize 14
+skinparam ArrowThickness 1
+skinparam ArrowColor Black
+
+actor User
+actor System
+
+rectangle "User Management" {
+    User --> (Register)
+    (Register) .> (Validation) : <<include>>
+
+    User --> (Login)
+    (Login) .> (Authentication) : <<include>>
+}
+
+rectangle "Note Management" {
+    User --> (Create Note)
+
+    User --> (View A Note)
+
+    User --> (View Notes)
+
+    User --> (Edit Note)
+
+    User --> (Delete Note)
+    (Delete Note) .u.> (Check Note-Task Links) : <<extend>>
+    System --> (Check Note-Task Links)
+    (Check Note-Task Links) --> (Show Linked Tasks)
+    User --> (Confirm Note Deletion)
+    (Confirm Note Deletion) --> (Remove Links and Delete Note)
+    System --> (Remove Links and Delete Note)
+}
+
+rectangle "Task Management" {
+    User --> (Create Task)
+
+    User --> (View A Task)
+
+    User --> (View Tasks)
+
+    User --> (Edit Task)
+
+    User --> (Delete Task)
+    (Delete Task) .u.> (Check Task Dependency) : <<extend>>
+    System --> (Check Task Dependency)
+    (Check Task Dependency) --> (Show Dependent Tasks)
+    User --> (Confirm Task Deletion)
+    (Confirm Task Deletion) --> (Remove Dependency and Delete Task)
+    System --> (Remove Dependency and Delete Task)
+
+    User --> (Complete Task)
+}
+
+rectangle "Tag Management" {
+    User --> (Create Tag)
+
+    User --> (View Tags)
+
+    User --> (Edit Tag)
+
+    User --> (Delete Tag)
+    (Delete Tag) .u.> (Check Linked Notes and Tasks) : <<extend>>
+    System --> (Check Linked Notes and Tasks)
+    (Check Linked Notes and Tasks) --> (Show Linked Notes and Tasks)
+    User --> (Confirm Tag Deletion)
+    (Confirm Tag Deletion) --> (Remove Links and Delete Tag)
+    System --> (Remove Links and Delete Tag)
+}
+
+@enduml

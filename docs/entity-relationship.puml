@@ -1,0 +1,77 @@
+@startuml
+
+title TaskyNote - Entity Relationship Diagram
+
+left to right direction
+
+entity "User" as user {
+    * id: UUID
+    --
+    username: Varchar(50)
+    email: Varchar(255)
+    password: Varchar(255)
+    name: Varchar(100)
+    surname: Varchar(100)
+    created_at: Timestamp
+    updated_at: Timestamp
+}
+
+entity "Note" as note {
+    * id: UUID
+    --
+    user_id: UUID
+    title: Varchar(255)
+    content: Text
+    created_at: Timestamp
+    updated_at: Timestamp
+}
+
+entity "Task" as task {
+    * id: UUID
+    --
+    user_id: UUID
+    title: Varchar(255)
+    description: Text
+    due_date: Date
+    completed: Boolean
+    prerequisite_task_id: UUID
+    created_at: Timestamp
+    updated_at: Timestamp
+}
+
+entity "Tag" as tag {
+    * id: UUID
+    --
+    user_id: UUID
+    name: Varchar(100)
+    created_at: Timestamp
+    updated_at: Timestamp
+}
+
+entity "Note_Tag" as note_tag {
+    * note_id: UUID
+    * tag_id: UUID
+}
+
+entity "Task_Tag" as task_tag {
+    * task_id: UUID
+    * tag_id: UUID
+}
+
+entity "Task_Note" as task_note {
+    * task_id: UUID
+    * note_id: UUID
+}
+
+user ||--o{ note : "has"
+user ||--o{ task : "has"
+user ||--o{ tag : "has"
+
+note }o--o{ tag : "tagged"
+task }o--o{ tag : "tagged"
+
+task }o--o{ note : "references"
+
+task ||--o| task : "prerequisite"
+
+@enduml

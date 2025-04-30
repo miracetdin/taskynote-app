@@ -16,11 +16,11 @@ This document defines the main entities and relationships between them for the T
 | Field | Type | Nullable | Default | Description |
 | :-- | :-- | :-- | :-- | :-- |
 | id | UUID (PK) | No | - | Unique identifier of the user |
-| username | String | No | - | Username of the user |
-| email | String | No | - | Email address of the user |
-| password | String | No | - | Hashed password |
-| name | String | Yes | null | First name of the user |
-| surname | String | Yes | null | Last name of the user |
+| username | Varchar(50) | No | - | Username of the user |
+| email | Varchar(255) | No | - | Email address of the user |
+| password | Varchar(255) | No | - | Hashed password |
+| name | Varchar(100) | Yes | null | First name of the user |
+| surname | Varchar(100) | Yes | null | Last name of the user |
 | created_at | Timestamp | No | now() | Creation time |
 | updated_at | Timestamp | No | now() | Last update time |
 
@@ -30,7 +30,7 @@ This document defines the main entities and relationships between them for the T
 | :-- | :-- | :-- | :-- | :-- |
 | id | UUID (PK) | No | - | Unique identifier of the note |
 | user_id | UUID (FK) | No | - | Owner user ID |
-| title | String | No | - | Title of the note |
+| title | Varchar(255) | No | - | Title of the note |
 | content | Text | Yes | null | Body of the note | 
 | created_at | Timestamp | No | now() | Creation time |
 | updated_at | Timestamp | No | now() | Last update time |
@@ -41,7 +41,7 @@ This document defines the main entities and relationships between them for the T
 | :-- | :-- | :-- | :-- | :-- |
 | id | UUID (PK) | No | - | Unique identifier of the task | 
 | user_id | UUID (FK) | No | - | Owner user ID |
-| title | String | No | - | Title of the task |
+| title | Varchar(255) | No | - | Title of the task |
 | description | Text | Yes | null | Details of the task | 
 | due_date | Date | Yes | null | Due date of the task |
 | completed | Boolean | No | false | Task completion status |
@@ -55,7 +55,7 @@ This document defines the main entities and relationships between them for the T
 | :-- | :-- | :-- | :-- | :-- |
 | id | UUID (PK) | No | - |Unique identifier of the tag |
 | user_id | UUID (FK) | No | - | Owner user ID |
-| name | String | No | - | Name of the tag |
+| name | Varchar(100) | No | - | Name of the tag |
 | created_at | Timestamp | No | now() | Creation time |
 | updated_at | Timestamp | No | now() | Last update time |
 
